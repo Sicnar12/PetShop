@@ -1,12 +1,18 @@
 body{
-    background-color: rgb(46, 165, 42);
+    background-color: #65dfef;
     text-align: center;
     
 }
 nav{
     align-content:center;
+    background-color: #1f8cf2;
 }
 
-form{
-   mar
+ol{
+display: inline;
+    text-align: center;
 }
+img-carousel{
+    max-width: 30%;
+}
+
