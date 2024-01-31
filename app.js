@@ -39,15 +39,29 @@ var shop = [
 
 ]
 
-var postHTML = " "
-
-for (var i=0; i < shop.length ; i++){
-    var wrapper = '<div class="card m-2" style="width: 18rem;"'
-    var heading = '<span><h5 class="card-title">' + shop[i].title + '</h5>'
-    var image = '<img class="card-image-top" src="' + shop[i].image + '"/'
-    var price = '<p> $' + shop[i].price + '</p></span>'
-    var description = '<div class="card-body"><p class="card-text">'+ shop[i].description + '</p><button type="button" class="btn btn-warning"> add to cart</button></div></div>'
-    var concatThis = wrapper + heading + image + price + description;
-    postHTML = postHTML + concatThis
+var postHTML = '<div class="container">'; // Open the container
+// Loop through the shop items
+for (var i = 0; i < shop.length; i++) {
+    // Open a new row for every third item
+    if (i % 3 === 0) {
+        postHTML += '<div class="row justify-content-center ">';
+    }
+    // Card structure
+    var wrapper = '<div class="col-md-4 mb-3">';
+    var card = '<div class="card" style="width: 15rem;">'; // Adjusted card width
+    var image = '<img class="card-img-top" src="' + shop[i].image + '" alt="' + shop[i].title + '"/>';
+    var body = '<div class="card-body">';
+    var heading = '<h5 class="card-title">' + shop[i].title + '</h5>';
+    var price = '<p class="card-text">$' + shop[i].price + '</p>';
+    var description = '<p class="card-text">' + shop[i].description + '</p>';
+    var button = '<button type="button" class="btn btn-warning">Add to Cart</button></div></div></div>';
+    var concatThis = wrapper + card + image + body + heading + price + description + button;
+    // Append the concatenated card to the row
+    postHTML += concatThis;
+    // Close the row after every third item
+    if (i % 3 === 2 || i === shop.length - 1) {
+        postHTML += '</div>';
+    }
 }
+postHTML += '</div>'; // Close the container
 document.getElementById('market').innerHTML = postHTML
